@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/x-icon" href="https://production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico"
+    />
+    <link rel="mask-icon" type="" href="https://production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg"
+        color="#111" />
+    <title>CodePen - D3.js implementation of chart.js charts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css'>
+
+    <style>
+        .container h2,
+        .container h3,
+        .container h4 {
+            text-align: center;
+        }
+        
+        .container .card-title {
+            color: #00695c;
+        }
+    </style>
+
+
+
+
+
+</head>
+
+<body translate="no">
+
+    <div class="container">
+        <div class="row">
+            <h3>D3.js implementation of basic chart.js graphs</h3>
+        </div>
+        <div class="row">
+            <h4>Bar chart</h4>
+            <div class="row">
+                <div class="row">
+                    <pre>
+                        data: { labels: ["Niger", "Cameroon", "Georgia", "Spain", "United States","Singapore", "Qatar"], datasets: [{ label: 'GDP
+                        Per Capita in $ (2015)', data: [1080, 3144, 9630, 34819, 55805, 85253, 132099], backgroundColor:
+                        [ "#FF6384", "#36A2EB", "#FFCE56", "#AA6384", "#2CA21B", "#678E86", "#FFAE86" ] }]
+                    </pre>
+                </div>
+                <div class="col m6 s12">
+                    <div class="card blue-grey lighten-5">
+                        <div class="card-content white-text">
+                            <span class="card-title">D3.js</span>
+                            <div id="d3JsBar">
+                            </div>
+
+                        </div>
+                        <div class="card-action">
+                            <a target="_blank" href="https://github.com/d3/d3/wiki">Documentation</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col m6 s12">
+                    <div class="card blue-grey lighten-5">
+                        <div class="card-content white-text">
+                            <span class="card-title">Chart.js</span>
+                            <canvas id="chartJsBar" width="400" height="400"></canvas>
+                        </div>
+                        <div class="card-action">
+                            <a target="_blank" href="http://www.chartjs.org/docs/#bar-chart">Documentation</a>
+                            <a target="_blank" href="https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(PPP)_per_capita">Source</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <h4>Line chart</h4>
+            <div class="row">
+                <div class="row">
+                    <pre>
+                        data: { labels: ["Niger", "Cameroon", "Georgia", "Spain", "United States", "Singapore","Qatar"], datasets: [{ label: 'GDP
+                        Per Capita in $ (2015)', data: [1080, 3144, 9630, 34819, 55805, 85253, 132099] }]
+                    </pre>
+                </div>
+                <div class="col m6 s12">
+                    <div class="card blue-grey lighten-5">
+                        <div class="card-content white-text">
+                            <span class="card-title">D3.js</span>
+                            <div id="d3JsLine">
+                            </div>
+
+                        </div>
+                        <div class="card-action">
+                            <a target="_blank" href="https://github.com/d3/d3/wiki">Documentation</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col m6 s12">
+                    <div class="card blue-grey lighten-5">
+                        <div class="card-content white-text">
+                            <span class="card-title">Chart.js</span>
+                            <canvas id="chartJsLine" width="400" height="400"></canvas>
+                        </div>
+                        <div class="card-action">
+                            <a target="_blank" href="http://www.chartjs.org/docs/#line-chart-introduction">Documentation</a>
+                            <a target="_blank" href="https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(PPP)_per_capita">Source</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h4>Pie chart</h4>
+            <div class="row">
+                <div class="row">
+                    <pre>
+                        data: { labels: ["Niger", "Cameroon", "Georgia", "Spain", "United States","Singapore", "Qatar"], datasets: [{ label: 'GDP
+                        Per Capita in $ (2015)', data: [1080, 3144, 9630, 34819, 55805, 85253, 132099], backgroundColor:
+                        [ "#FF6384", "#36A2EB", "#FFCE56", "#AA6384", "#2CA21B", "#678E86", "#FFAE86" ] }]
+                    </pre>
+                </div>
+                <div class="col m6">
+                    <div class="card blue-grey lighten-5">
+                        <div class="card-content white-text">
+                            <span class="card-title">Chart.js</span>
+                            <canvas id="chartJsPie" width="400" height="400"></canvas>
+                        </div>
+                        <div class="card-action">
+                            <a target="_blank" href="http://www.chartjs.org/docs/#doughnut-pie-chart">Documentation</a>
+                            <a target="_blank" href="https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(PPP)_per_capita">Source</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col m6">
+                    <div class="card blue-grey lighten-5">
+                        <div class="card-content white-text">
+                            <span class="card-title">D3.js</span>
+
+
+                        </div>
+                        <div class="card-action">
+                            <a target="_blank" href="https://github.com/d3/d3/wiki">Documentation</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h4>Doughnut chart</h4>
+            <div class="row">
+                <div class="row">
+                    <pre>
+                        data: { labels: ["Niger", "Cameroon", "Georgia", "Spain", "United States","Singapore", "Qatar"], datasets: [{ label: 'GDP
+                        Per Capita in $ (2015)', data: [1080, 3144, 9630, 34819, 55805, 85253, 132099], backgroundColor:
+                        [ "#FF6384", "#36A2EB", "#FFCE56", "#AA6384", "#2CA21B", "#678E86", "#FFAE86" ] }]
+                    </pre>
+                </div>
+                <div class="col m6">
+                    <div class="card blue-grey lighten-5">
+                        <div class="card-content white-text">
+                            <span class="card-title">Chart.js</span>
+                            <canvas id="chartJsDoughnut" width="400" height="400"></canvas>
+                        </div>
+                        <div class="card-action">
+                            <a target="_blank" href="http://www.chartjs.org/docs/#doughnut-pie-chart">Documentation</a>
+                            <a target="_blank" href="https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(PPP)_per_capita">Source</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col m6">
+                    <div class="card blue-grey lighten-5">
+                        <div class="card-content white-text">
+                            <span class="card-title">D3.js</span>
+
+
+                        </div>
+                        <div class="card-action">
+                            <a target="_blank" href="https://github.com/d3/d3/wiki">Documentation</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h4>Polar chart</h4>
+            <div class="row">
+                <div class="row">
+                    <pre>
+                        data: { labels: ["Niger", "Cameroon", "Georgia", "Spain","United States", "Singapore", "Qatar"], datasets: [{ label: 'GDP
+                        Per Capita in $ (2015)', data: [1080, 3144, 9630, 34819, 55805, 85253, 132099], backgroundColor:
+                        [ "#FF6384", "#36A2EB", "#FFCE56", "#AA6384", "#2CA21B", "#678E86", "#FFAE86" ] }]
+                    </pre>
+                </div>
+                <div class="col m6">
+                    <div class="card blue-grey lighten-5">
+                        <div class="card-content white-text">
+                            <span class="card-title">Chart.js</span>
+                            <canvas id="chartJsPolar" width="400" height="400"></canvas>
+                        </div>
+                        <div class="card-action">
+                            <a target="_blank" href="http://www.chartjs.org/docs/#polar-area-chart">Documentation</a>
+                            <a target="_blank" href="https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(PPP)_per_capita">Source</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col m6">
+                    <div class="card blue-grey lighten-5">
+                        <div class="card-content white-text">
+                            <span class="card-title">D3.js</span>
+
+
+                        </div>
+                        <div class="card-action">
+                            <a target="_blank" href="https://github.com/d3/d3/wiki">Documentation</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h4>Radar chart</h4>
+            <div class="row">
+                <div class="row">
+                    <pre>
+                        data: { labels: ["Niger", "Cameroon", "Georgia", "Spain","United States", "Singapore", "Qatar"], datasets: [{ label: 'GDP
+                        Per Capita in $ (2015)', data: [1080, 3144, 9630, 34819, 55805, 85253, 132099], }]
+                    </pre>
+                </div>
+                <div class="col m6">
+                    <div class="card blue-grey lighten-5">
+                        <div class="card-content white-text">
+                            <span class="card-title">Chart.js</span>
+                            <canvas id="chartJsRadar" width="400" height="400"></canvas>
+                        </div>
+                        <div class="card-action">
+                            <a target="_blank" href="http://www.chartjs.org/docs/#radar-chart">Documentation</a>
+                            <a target="_blank" href="https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(PPP)_per_capita">Source</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col m6">
+                    <div class="card blue-grey lighten-5">
+                        <div class="card-content white-text">
+                            <span class="card-title">D3.js</span>
+
+
+                        </div>
+                        <div class="card-action">
+                            <a target="_blank" href="https://github.com/d3/d3/wiki">Documentation</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js'></script>
+   <script src="d3JsLine"></script>
+   <script src="d3JsBar"></script>
+
+
+
+
+</body>
+
+</html>
