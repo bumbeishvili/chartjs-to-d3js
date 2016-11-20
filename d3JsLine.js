@@ -226,7 +226,6 @@ function drawD3JsLine(selector) {
         .duration(attrs.animationDuration)
         .ease(attrs.animationEase)
         .attrTween("d", function () {
-            debugger;
             var interpolator = d3.interpolateArray(startData, data);
             return function (t) {
                 return area(interpolator(t));
