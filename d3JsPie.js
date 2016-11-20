@@ -23,7 +23,7 @@ function drawD3JsPie(selector) {
         pieStroke: 'white',
         pieStrokeWidth: 3,
         titleText: info.title,
-
+hoverColorImpact:1,
         animationDuration: 1200,
         animationEase: 'out',
         titleHeight: 30,
@@ -55,6 +55,19 @@ function drawD3JsPie(selector) {
         .value(function (d) { return d.value; });
 
 
+    //###############  STARTUP ANIMATIONS ###############
+     var tweens = {}
+
+    tweens.pieIn = function(endData) {
+        var startData = { startAngle: 0, endAngle: 0 };
+        var interpolation = d3.interpolate(startData, endData);
+       debugger;
+        return function(currentData){
+            debugger;
+           return arcs.pie(interpolation(currentData));
+        }
+    };
+
 
     //  ########### RESPONSIVE SVG DRAWING  ##############
     var svg = d3.select(selector)
@@ -80,19 +93,15 @@ function drawD3JsPie(selector) {
 
 
     pieArcs.append("path")
-        .attr("d", arcs.pie)
+        //.attr("d", arcs.pie)
         .attr('stroke-width', attrs.pieStrokeWidth)
         .attr('stroke', attrs.pieStroke)
-        .attr("fill", function (d) { return d.data.backgroundColor; });
+        .attr("fill", function (d) { return d.data.backgroundColor; })
+        .transition()
+        .duration(1000)
+        .attrTween("d",tweens.pieIn);
 
 
-    //############### ADDING STARTUP ANIMATIONS ###############
-
-    var startData = data.map(function () {
-        return {
-            value: 0
-        }
-    });
 
 
 
@@ -123,14 +132,14 @@ function drawD3JsPie(selector) {
             div.transition()
                 .duration(100)
                 .style("opacity", .9);
-                
+
             div.html("<b>" + attrs.titleText + "</b><br/>" + d.data.label + ' : ' + d.data.value)
                 .style("left", (d3.event.pageX + buffer) + "px")
                 .style("top", (d3.event.pageY - 28) + "px");
 
 
             var currPath = d3.select(this).select('path');
-            var darkenedColor = d3.rgb(currPath.attr('fill')).darker(1);
+            var darkenedColor = d3.rgb(currPath.attr('fill')).darker(attrs.hoverColorImpact);
             currPath.attr('fill', darkenedColor);
 
 
@@ -141,7 +150,7 @@ function drawD3JsPie(selector) {
                 .style("opacity", 0);
 
             var currPath = d3.select(this).select('path');
-            var changedColor = d3.rgb(currPath.attr('fill')).darker(-1);
+            var changedColor = d3.rgb(currPath.attr('fill')).darker(-attrs.hoverColorImpact);
             currPath.attr('fill', changedColor);
 
         });
