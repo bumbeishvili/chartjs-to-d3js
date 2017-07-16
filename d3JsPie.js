@@ -23,7 +23,7 @@ function drawD3JsPie(selector) {
         pieStroke: 'white',
         pieStrokeWidth: 3,
         titleText: info.title,
-hoverColorImpact:1,
+        hoverColorImpact: 1,
         animationDuration: 1200,
         animationEase: 'out',
         titleHeight: 30,
@@ -56,15 +56,13 @@ hoverColorImpact:1,
 
 
     //###############  STARTUP ANIMATIONS ###############
-     var tweens = {}
+    var tweens = {}
 
-    tweens.pieIn = function(endData) {
+    tweens.pieIn = function (endData) {
         var startData = { startAngle: 0, endAngle: 0 };
         var interpolation = d3.interpolate(startData, endData);
-       debugger;
-        return function(currentData){
-            debugger;
-           return arcs.pie(interpolation(currentData));
+        return function (currentData) {
+            return arcs.pie(interpolation(currentData));
         }
     };
 
@@ -99,7 +97,7 @@ hoverColorImpact:1,
         .attr("fill", function (d) { return d.data.backgroundColor; })
         .transition()
         .duration(1000)
-        .attrTween("d",tweens.pieIn);
+        .attrTween("d", tweens.pieIn);
 
 
 
@@ -121,7 +119,7 @@ hoverColorImpact:1,
         .style("border-radius", '4px')
         .style("pointer-events", 'none')
 
-    d3.selectAll('.arc')
+    svg.selectAll('.arc')
         .on("mouseover", function (d, i) {
             var buffer = d.value.toString().length;
             if (i > data.length / 2) {
@@ -129,13 +127,20 @@ hoverColorImpact:1,
             } else {
                 buffer *= 4;
             }
+            
+            var centroid = arcs.pie.centroid(d);
+            var svgDimensions  = svg.node().getBoundingClientRect();
+            
+            var left = (centroid[0]+attrs.marginLeft) * (svgDimensions.width / attrs.svgWidth);
+            var top = (centroid[1]+attrs.marginTop) * (svgDimensions.height / attrs.svgHeight);
+            
             div.transition()
                 .duration(100)
                 .style("opacity", .9);
 
             div.html("<b>" + attrs.titleText + "</b><br/>" + d.data.label + ' : ' + d.data.value)
-                .style("left", (d3.event.pageX + buffer) + "px")
-                .style("top", (d3.event.pageY - 28) + "px");
+                .style("left", left+ "px")
+                .style("top", top + "px");
 
 
             var currPath = d3.select(this).select('path');
