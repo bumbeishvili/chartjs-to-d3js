@@ -164,7 +164,7 @@ function drawD3JsLine(selector) {
         .style('font-size', attrs.fontSize)
         .attr('transform', 'translate(-5,0)')
 
-    d3.selectAll('.tick line')
+    svg.selectAll('.tick line')
         .attr('stroke', 'gray')
         .attr('stroke-width', attrs.tickLineStrokeWidth)
 
